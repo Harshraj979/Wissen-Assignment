@@ -110,11 +110,11 @@ class AlertDashboardHandler(BaseHTTPRequestHandler):
         url = urlparse(self.path)
         path = url.path
 
-        if path in ("/", "/index.html"):
+        if path in ("/", "/index.html", "/web", "/web/", "/web/index.html"):
             self.serve_static("index.html", "text/html; charset=utf-8")
-        elif path == "/styles.css":
+        elif path in ("/styles.css", "/web/styles.css"):
             self.serve_static("styles.css", "text/css; charset=utf-8")
-        elif path == "/app.js":
+        elif path in ("/app.js", "/web/app.js"):
             self.serve_static("app.js", "application/javascript; charset=utf-8")
         elif path == "/api/default":
             # Load default sample files from disk
